@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+        <WarnOn>3390;$(WarnOn)</WarnOn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="DesignPatterns\adapter.fsx" />
+        <None Include="DesignPatterns\chainor.fsx" />
+        <None Include="DesignPatterns\chainor2.fsx" />
+        <None Include="DesignPatterns\chainor3.fsx" />
+        <None Include="DesignPatterns\chainorTemplate.fsx" />
+        <None Include="DesignPatterns\command.fsx" />
+        <None Include="DesignPatterns\command3.fsx" />
+        <None Include="DesignPatterns\decorator2.fsx" />
+        <None Include="DesignPatterns\decorator3.fsx" />
+        <None Include="DesignPatterns\factory.fsx" />
+        <None Include="DesignPatterns\observer.fsx" />
+        <None Include="DesignPatterns\observer2.fsx" />
+        <None Include="DesignPatterns\observer4.fsx" />
+        <None Include="DesignPatterns\statepattern.fsx" />
+        <None Include="DesignPatterns\statepattern2.fsx" />
+        <None Include="DesignPatterns\strategy1.fsx" />
+        <None Include="DesignPatterns\strategy2.fsx" />
+        <None Include="Misc\CleanNames.fsx" />
+        <Compile Include="Misc\ClosureSample.fs" />
+        <Compile Include="Misc\Composition.fs" />
+        <None Include="Misc\CompositionScript.fsx" />
+        <None Include="Misc\DDD.fsx" />
+        <None Include="Misc\DiscUnion.fsx" />
+        <None Include="Misc\DownloadWeb.fsx" />
+        <None Include="Misc\FPWrapper.fsx" />
+        <None Include="Misc\ImmutableClosure.fsx" />
+        <None Include="Misc\LazyTest.fsx" />
+        <None Include="Misc\MemoizationSamples.fsx" />
+        <None Include="Misc\PatternMatching.fsx" />
+        <None Include="Misc\PattMatch.fsx" />
+        <None Include="Misc\quickSort.fsx" />
+        <Compile Include="Misc\Recursion.fs" />
+        <None Include="Misc\RetryCurry.fsx" />
+        <None Include="Misc\UnitOfMeasure.fsx" />
+        <Compile Include="Concurrency\GetReplies.fs" />
+        <Compile Include="Concurrency\AsyncHelpers.fs" />
+        <None Include="Concurrency\Demo.fsx" />
+        <None Include="DSL\ExprMath.fsx" />
+        <None Include="DSL\financial.fsx" />
+        <None Include="DSL\Notes.fsx" />
+        <None Include="DSL\Script.fsx" />
+        <None Include="DSL\Statbucks.fsx" />
+        <None Include="Syntax.fsx" />
+        <None Include="Demo.fsx" />
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+</Project>
