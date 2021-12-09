@@ -65,36 +65,37 @@ module ParallelWebCrawler =
        "http://www.yahoo.com";     "http://www.amazon.com"
        "http://news.yahoo.com";    "http://www.microsoft.com"; ]
 
-    // Step (1) create an Agent that prints the messages received.
+    // Step (1) create an Agent that prints the messages.
     //    this is important in parallel computations that print some output
     //    to keep the console in a readable state
     let printerAgent =
         Agent.Start((fun (inbox : Agent<Msg<string, unit>>) -> async {
 
-          // MISSING CODE HERE
-          return! async.Return ()  // << replace this line with the correct implementation
+
+          // MISSING CODE
+          return! async.Return ()  // << replace this line with implementation
           }), cancellationToken = cts.Token)
 
     // Test
     printerAgent.Post (Item "Hello from printerAgent!!")
 
     // Step (2)
-    //     create a "parallelAgent" worker based on the MailboxProcessor.
+    //     create a "parallelAgent" worker based on the MailboxPorcerssor.
     //     the idea is to have an Agent that handles, computes and distributes the messages
     //     in a Round-Robin fashion between a set of (intern and pre-instantiated) Agent-children
     //
-    //     This is important in the case of async computations, so you can achieve great throughput
+    //     This is important in the case of async computaions, so you can achieve great throughput
     //     If already completed the "Agent Pipeline" lab, then feel free to use the "parallelAgent" already created
 
     let parallelAgent (degreeOfParallelism : int) (f: MailboxProcessor<Msg<'a, 'b>> -> Async<unit>) =
         let token = cts.Token
 
         // MISSING CODE HERE
-        // 1 - use the "Array" module to initialize an array of Agents
+        // 1 - use the "Array" module to initalize an array of Agents
         let agents = Unchecked.defaultof<MailboxProcessor<_> []> // << replace this line with implementation
 
         // 2 - crete an agent that broadcasts the messages received
-        //     in a Round-Robin fashion between the agents created in the previous point
+        //     in a Round-Robin fashion between the agents created in the  previous point
         let agent = new Agent<Msg<'a, 'b>>((fun inbox ->
             let rec loop index = async {
                 let! msg = inbox.Receive()
@@ -109,7 +110,7 @@ module ParallelWebCrawler =
         agent
 
     // Step (3) complete the "Item(url)" case
-    let fetchContetAgent (limit : int option) =
+    let fetchContentAgent (limit : int option) =
         parallelAgent parallelism (fun (inbox : MailboxProcessor<_>) ->
             let rec loop (urls : Set<string>) (agents : Agent<_> list) = async {
                 let! msg = inbox.Receive()
@@ -123,38 +124,41 @@ module ParallelWebCrawler =
                     //
                     //    IMPORTANT: the content is passed (broadcast) as message to all the agents subscribed to this agent.
                     //               the registration is done using the "Mailbox(agent)" message/case.
-                    //               The agents list (subscribed) is kept as state of the agent recursive loop (agents : Agent<_> list)
+                    //               The list of agent subscribed is kept as state of the agent loop (agents : Agent<_> list)
                     // else
                     //     do nothing
                     //
                     // verify if the limit of the Urls downloaded is reached, and stop the process accordingly
-                    // (keep in mind that the "limit" is an option type (if None then the process has not limit)
+                    // (keep in mind that the "limit" is an option type (if None then the process is limiteless)
 
                     return! loop urls agents
 
                 // the "Msg<_,_>" case is not completed.
-                    // finish the code covering the missing "Msg<_,_>" cases.
-                    // this missing case is responsible to register the Agents (passed as message)
-                    // into the current Agent body.
+                // finish the code covering the missing "Msg<_,_>" cases.
+                // this missing case is resposible to register the Agents (passed as message)
+                // into the current Agent body.
+
             }
             loop Set.empty [])
 
     // Testing
     let testFetchContetAgent () =
-        let agent = fetchContetAgent (Some 5)
+        let agent = fetchContentAgent (Some 5)
         agent.Post (Mailbox(printerAgent))
         for site in sites do agent.Post (Item site)
 
     testFetchContetAgent()
 
-    // Step (4)   create a broadcast agent, which simply broadcasts (forward)
-    //            the messages received to all the agents subscribed
+
+    // Step (4)  create a broadcast agent, which simply broadcasts (forward)
+    //           the messages received to all the agents subscribed
     //     Bonus:    would be nice to have a filter in place to select
     //               which agent receives which message (no required)
     let broadcastAgent () =
         parallelAgent parallelism (fun inbox ->
             let rec loop (agents : Agent<_> list) = async {
                 let! msg = inbox.Receive()
+
                 // The content is passed (broadcast) as message to all the agents subscribed.
                 // The registration is done using the "Mailbox(agent)" message/case.
                 // The list of agent subscribed is kept as state of the agent loop (agents : Agent<_> list)
@@ -162,24 +166,25 @@ module ParallelWebCrawler =
                 // MISSING CODE
 
                 // match msg with
+
                 return! loop agents // << this line should be replaced with correct implementation
             }
             loop [])
 
     // Testing
     let testBroadcastAgent1() =
-        let brcast = broadcastAgent()
-        brcast.Post (Mailbox(printerAgent))
-        for site in sites do brcast.Post (Item site)
+        let broadcast = broadcastAgent()
+        broadcast.Post (Mailbox(printerAgent))
+        for site in sites do broadcast.Post (Item site)
 
     testBroadcastAgent1()
 
     // Step (5)  Implement a "link" agent parser.
     //           - the message "Mailbox(agent)" subscribes agent(s)
-    //           - the message "Item(url)" delivers an url to process
+    //           - the message "Item(url)" to delivers an url to process
     //
-    //           implement an agent that extracts the "href" tags from a web page
-    //           and sends the reference (href) to the Agent subscribed  in the form of link
+    //           implement an agent that extract the "href" tags from a web page
+    //           and send the reference (href) to the Agent subscribed  as link
     let linksParserAgent () =
         parallelAgent parallelism (fun inbox ->
             let rec loop (agents : Agent<_> list) = async {
@@ -198,10 +203,9 @@ module ParallelWebCrawler =
                             else None)
                         |> Seq.filter(fun url -> httpRgx.IsMatch(url)) // NOTE, IS THIS CORRECT ??
 
+                    // broadcast the links extracted to all the "agents" subscribed
+                    // (use the "Item" case to send the "link" extracted
                     // Missing code
-                        // broadcast the links extracted to all the "agents" subscribed
-                        // (use the "Item" case to send the "link" extracted
-
 
                     return! loop agents
                 // Add the missing case to register/subscribe Agents
@@ -212,6 +216,7 @@ module ParallelWebCrawler =
 
     // imageParserAgent implementation will be pushed on github after the
     // implementation of the "linksParserAgent"
+
     let comparison = StringComparison.InvariantCultureIgnoreCase
     let linkFilter =
         fun (link : string) ->
@@ -248,12 +253,12 @@ module ParallelWebCrawler =
             })
 
     type WebCrawler (?limit) as this =
-        let fetchContetAgent = fetchContetAgent limit
+        let fetchContetAgent = fetchContentAgent limit
         let contentBroadcaster = broadcastAgent ()
         let linkBroadcaster = broadcastAgent ()
         let linksParserAgent = linksParserAgent ()
 
-        //   uncomment the code below
+        //   remove comment below
         //   let imageParserAgent = imageParserAgent ()
 
         // Step (6)
@@ -261,7 +266,7 @@ module ParallelWebCrawler =
         do
             fetchContetAgent.Post     (Mailbox(contentBroadcaster))
 
-            // MISSING CODE for the rest of the registrations
+            // MISSING CODE for registration
 
         member __.Submit(url : string) = fetchContetAgent.Post(Item(url))
 

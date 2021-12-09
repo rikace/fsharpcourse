@@ -95,3 +95,19 @@ let myInstance' =
               methodParam + 1 }
 
 myInstance'.MyMethod 2
+
+
+// Object expressions
+module Object_expressions =
+    open System
+
+    let print color =
+        let current = Console.ForegroundColor
+        Console.ForegroundColor <- color
+        {   new IDisposable with
+                 member x.Dispose() =
+                    Console.ForegroundColor <- current
+        }
+
+    using(print ConsoleColor.Red) (fun _ -> printf "Hello in red!!")
+    using(print ConsoleColor.Blue) (fun _ -> printf "Hello in blue!!")

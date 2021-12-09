@@ -7,8 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="Recursion.fsx" />
-        <None Include="FizzBuzz.fsx" />
+        <Compile Include="Async.fs" />
+        <Compile Include="ParallelWebCrawlerModule.fs" />
+        <None Include="AgentDemo.fsx" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 

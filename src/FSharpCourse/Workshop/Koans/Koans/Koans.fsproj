@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+        <WarnOn>3390;$(WarnOn)</WarnOn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="AboutAsserts.fs" />
+        <Compile Include="AboutLet.fs" />
+        <Compile Include="AboutFunctions.fs" />
+        <Compile Include="AboutTheOrderOfEvaluation.fs" />
+        <Compile Include="AboutUnit.fs" />
+        <Compile Include="AboutTuples.fs" />
+        <Compile Include="AboutStrings.fs" />
+        <Compile Include="AboutBranching.fs" />
+        <Compile Include="AboutLists.fs" />
+        <Compile Include="AboutPipelining.fs" />
+        <Compile Include="AboutArrays.fs" />
+        <Compile Include="AboutLooping.fs" />
+        <Compile Include="MoreAboutFunctions.fs" />
+        <Compile Include="AboutDotNetCollections.fs" />
+        <Compile Include="AboutTheStockExample.fs" />
+        <Compile Include="AboutRecordTypes.fs" />
+        <Compile Include="AboutOptionTypes.fs" />
+        <Compile Include="AboutDiscriminatedUnions.fs" />
+        <Compile Include="AboutModules.fs" />
+        <Compile Include="AboutClasses.fs" />
+        <Compile Include="AboutFiltering.fs" />
+        <Compile Include="PathToEnlightenment.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Koans.Core\Koans.Core.fsproj" />
+    </ItemGroup>
+
+</Project>

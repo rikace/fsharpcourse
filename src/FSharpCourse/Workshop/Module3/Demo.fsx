@@ -55,6 +55,27 @@ let divide' x y =
 let result'' = divide' 4 2
 let result''' = divide' 4 0
 
+
+type Calc =
+    | Num of int
+    | Add of Calc * Calc
+    | Mul of Calc * Calc 
+
+let rec eval exp = 
+    match exp with 
+    | Num z -> z
+    | Add (a, b) -> (eval a) + (eval b)
+    | Mul (a, b) -> (eval a) * (eval b)
+
+Add(Num 40, Num 2) |> eval 
+Add(Mul(Num 40, Num 2), Add(Num 4, Num 8)) |> eval 
+
+
+
+
+
+
+
 [<Measure>] type m; [<Measure>] type km; [<Measure>] type h
 let distanceInMts = 11580.0<m>
 let distanceInKms = 87.34<km>

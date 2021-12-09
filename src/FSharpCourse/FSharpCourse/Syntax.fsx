@@ -1,17 +1,13 @@
-open System
+open System // <- to using in C#
 
 // single line comments use a double slash
-(* multi line comments use (* . . . *) pair -end of multi line comment- *)
-
-// The let statement
-// let <name> <parms> = <expr>
-
-
+(* multi line comments use (* . . . *) 
+pair -end of multi line comment- *)
 
 // let binding
 module binding =
     let myInt = 42
-    let myFloat = 3.14
+    let mutable myFloat = 3.14
     let myString = "hello functional programming"
     let myFunction = fun number -> number * number
 
@@ -24,7 +20,19 @@ module binding =
     printfn "%d" !myRefVar
 
 
+    //  val printSum : a:int -> b:int -> unit
+    let printSum (a: int) (b: int) = 
+        let result = a + b
+        printfn "Result = %d" result
+       
+
 module basic =
+
+    let num = 9
+    let fl = 10.2
+    let st = "hello"
+    let myt = 3, "hello", true
+
 
     let n = Some 7
 
@@ -43,16 +51,27 @@ module basic =
 
 // Functions as first class types
 module FunctionFirstClass =
-    let square x = x * x
-    let plusOne x = x + 1
+    
+ 
+    let name = "ricky" // val name : string = "ricky"
+    let square x = x * x // val square : x:int -> int
+    let plusOne (x: int) = x + 1 // val plusOne : x:int -> int
     let isEven x = x % 2 = 0
 
-    // Composition - Pipe and Composition operators
-    let inline (|>) x f = f x
-    let inline (>>) f g x = g(f x)
+    let add a b = a + b
 
+    7 |> add 6
+    add  6 7 
+ 
+
+    // Composition - Pipe and Composition operators
+    // let inline (|>) x f = f x
+    // let inline (>>) f g x = g(f x)
+    7 |> square 
     let squarePlusOne x =  x |> square |> plusOne
+    
     let plusOneIsEven = plusOne >> isEven
+    plusOneIsEven 9
 
 // Delegates
 module Delegates =
@@ -66,6 +85,7 @@ module Delegates =
 
 // Special String definition
 module Strings =
+    let myStr = "ricky"
     let verbatimHtml = @"<input type=\""submit\"" value=\""Submit\"">"
     let tripleHTML = """<input type="submit" value="Submit">"""
 
@@ -74,6 +94,12 @@ module Strings =
 
     Console.WriteLine ``hello world``
 
+module MyMod = 
+    type Person(name) = 
+        member this.name = name
+
+    module Person = 
+        let printName (p:Person) = p.name 
 
 // Tuple
 module Tuple =
@@ -88,10 +114,21 @@ module Tuple =
     let one = fst tuple
     let hello = snd tuple
 
+
+
 // Record-Types
 module RecordTypes =
+    
     type Person = { FirstName : string; LastName : string; Age : int }
+
     let fred = { FirstName = "Fred"; LastName = "Flintstone"; Age = 42 }
+
+    let fn = fred.FirstName
+
+
+
+
+
 
     type Person with
         member this.FullName = sprintf "%s %s" this.FirstName this.LastName

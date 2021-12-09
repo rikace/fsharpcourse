@@ -12,7 +12,10 @@
         <Compile Include="Functions.fs" />
         <Compile Include="Services.fs" />
         <None Include="Try.fsx" />
-        <Compile Include="Program.fs" />
+        <Compile Include="Progran.fs" />
+        <Content Include="Customers.txt">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>

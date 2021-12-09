@@ -44,8 +44,33 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestProject1", "Workshop\Module4\TestProject1\TestProject1.fsproj", "{09CC5087-61A6-45FC-8B63-9B899C2EB111}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module5", "Module5", "{7364B820-F2ED-4CAF-B3D3-30BFBB69791F}"
+ProjectSection(SolutionItems) = preProject
+	Workshop\Module5\Demo.fsx = Workshop\Module5\Demo.fsx
+EndProjectSection
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Application", "Workshop\Module5\Application\Application.fsproj", "{2BA218F8-CC04-4820-9E6D-3932DD4DBA30}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Koans", "Koans", "{1B950FBA-BB52-4D02-A097-226981667A86}"
+ProjectSection(SolutionItems) = preProject
+	Workshop\Koans\docker-meditate.sh = Workshop\Koans\docker-meditate.sh
+	Workshop\Koans\docker.sh = Workshop\Koans\docker.sh
+	Workshop\Koans\Dockerfile = Workshop\Koans\Dockerfile
+	Workshop\Koans\README.md = Workshop\Koans\README.md
+EndProjectSection
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Koans", "Workshop\Koans\Koans\Koans.fsproj", "{6E0ECC9D-4C17-4968-B771-78C339110010}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Koans.Core", "Workshop\Koans\Koans.Core\Koans.Core.fsproj", "{97205518-652F-494B-AEB8-0948D663A32A}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Koans.Test", "Workshop\Koans\Koans.Test\Koans.Test.fsproj", "{7E6FE681-3CE5-4031-93E7-C69CE11C48D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module6", "Module6", "{DD248E2A-513D-4FAE-AD71-0A5EE085287B}"
+ProjectSection(SolutionItems) = preProject
+	Workshop\Module6\ExprMath.fsx = Workshop\Module6\ExprMath.fsx
+	Workshop\Module6\ScriptDSL.fsx = Workshop\Module6\ScriptDSL.fsx
+EndProjectSection
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Application", "Workshop\Module6\Application\Application.fsproj", "{72A16E84-8194-4851-9882-24CD8139FF85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +122,22 @@ Global
 		{2BA218F8-CC04-4820-9E6D-3932DD4DBA30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BA218F8-CC04-4820-9E6D-3932DD4DBA30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BA218F8-CC04-4820-9E6D-3932DD4DBA30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E0ECC9D-4C17-4968-B771-78C339110010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E0ECC9D-4C17-4968-B771-78C339110010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E0ECC9D-4C17-4968-B771-78C339110010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E0ECC9D-4C17-4968-B771-78C339110010}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97205518-652F-494B-AEB8-0948D663A32A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97205518-652F-494B-AEB8-0948D663A32A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97205518-652F-494B-AEB8-0948D663A32A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97205518-652F-494B-AEB8-0948D663A32A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E6FE681-3CE5-4031-93E7-C69CE11C48D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E6FE681-3CE5-4031-93E7-C69CE11C48D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E6FE681-3CE5-4031-93E7-C69CE11C48D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E6FE681-3CE5-4031-93E7-C69CE11C48D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72A16E84-8194-4851-9882-24CD8139FF85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72A16E84-8194-4851-9882-24CD8139FF85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72A16E84-8194-4851-9882-24CD8139FF85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72A16E84-8194-4851-9882-24CD8139FF85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{34673254-F332-4C5B-B70C-9BED74D3EB99} = {1C2E6397-337A-40A7-BA44-8BF1B4C4CBFA}
@@ -113,5 +154,11 @@ Global
 		{09CC5087-61A6-45FC-8B63-9B899C2EB111} = {F7D09ED4-E1AE-49FF-B2C4-779B07545C9B}
 		{7364B820-F2ED-4CAF-B3D3-30BFBB69791F} = {1C2E6397-337A-40A7-BA44-8BF1B4C4CBFA}
 		{2BA218F8-CC04-4820-9E6D-3932DD4DBA30} = {7364B820-F2ED-4CAF-B3D3-30BFBB69791F}
+		{1B950FBA-BB52-4D02-A097-226981667A86} = {1C2E6397-337A-40A7-BA44-8BF1B4C4CBFA}
+		{6E0ECC9D-4C17-4968-B771-78C339110010} = {1B950FBA-BB52-4D02-A097-226981667A86}
+		{97205518-652F-494B-AEB8-0948D663A32A} = {1B950FBA-BB52-4D02-A097-226981667A86}
+		{7E6FE681-3CE5-4031-93E7-C69CE11C48D7} = {1B950FBA-BB52-4D02-A097-226981667A86}
+		{DD248E2A-513D-4FAE-AD71-0A5EE085287B} = {1C2E6397-337A-40A7-BA44-8BF1B4C4CBFA}
+		{72A16E84-8194-4851-9882-24CD8139FF85} = {DD248E2A-513D-4FAE-AD71-0A5EE085287B}
 	EndGlobalSection
 EndGlobal

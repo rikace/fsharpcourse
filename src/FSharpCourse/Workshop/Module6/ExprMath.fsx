@@ -1,12 +1,10 @@
-﻿
 // =====
 (*
-    Now that we have the building blocks to represent ideas 
-    in F#, we have all the power we need to represent a real world problem in the language of mathematics.
 
-    In this simple example we were able to represent and evaluate a four-function mathematical expression using only a discriminated union and a pattern match. You would be hard 
+    In this simple example we were able to represent and evaluate a four-function mathematical expression using only a discriminated union and a pattern match. You would be hard
     pressed to write the equivalent C# in as few lines of code because you would need to add additional scaffolding to represent these concepts.
 *)
+
 // This Discriminated Union is sufficient to express any four-function
 // mathematical expression.
 type Expr =
@@ -15,9 +13,9 @@ type Expr =
     | Subtract of Expr * Expr
     | Multiply of Expr * Expr
     | Divide   of Expr * Expr
-    
+
 // This simple pattern match is all we need to evaluate those
-// expressions. 
+// expressions.
 let rec evaluate expr =
     match expr with
     | Num(x)             -> x
@@ -29,17 +27,16 @@ let rec evaluate expr =
 // 10 + 5
 let ``10 + 5`` = 0
 
-
 // 10 * 10 - 25 / 5
-let sampleExpr = 
+let sampleExpr =
     Subtract(
         Multiply(
-            Num(10), 
+            Num(10),
             Num(10)),
         Divide(
-            Num(25), 
+            Num(25),
             Num(5)))
-        
+
 let result = evaluate sampleExpr
 
 

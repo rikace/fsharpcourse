@@ -9,33 +9,46 @@ let Setup () =
 open System
 open Types
 open Functions
-
-let customer = {
-    Id = 1
-    IsVip = false
-    Credit = 0M<USD>
-    PersonalDetails = Some {
-        FirstName = "John"
-        LastName = "Doe"
-        DateOfBirth = DateTime(1970, 11, 23) }
-    Notifications = ReceiveNotifications(receiveDeals = true,
-                                         receiveAlerts = true) }
-
+open Services
+//
+//let customer = {
+//    Id = 1
+//    IsVip = false
+//    Credit = 0M<USD>
+//    PersonalDetails = Some {
+//        FirstName = "John"
+//        LastName = "Doe"
+//        DateOfBirth = DateTime(1970, 11, 23) }
+//    Notifications = ReceiveNotifications(receiveDeals = true,
+//                                         receiveAlerts = true) }
+//
+//
 //[<Test>]
 //let ``4-1 Get purchases average``() =
 //    let purchases = getPurchases customer
-//    Assert.Equals(purchases, (customer, 60M))
+//    let test = (purchases = (customer, 60M))
+//    Assert.IsTrue test
+//
 //
 //[<Test>]
-//let ``4-2 Upgrade customer``() =
+//let ``4-2 Increase credit using USD``() =
+//    let upgradedCustomer = increaseCreditUsingVip customer
+//    let test = upgradedCustomer.Credit = 50M<USD>
+//    Assert.IsTrue test
+//
+//
+//[<Test>]
+//let ``4-3 Upgrade customer``() =
 //    let service = CustomerService() :> ICustomerService
 //    let upgradedCustomer = service.UpgradeCustomer 2
-//    Assert.IsTrue upgradedCustomer.IsVip
-//    Assert.Equals (upgradedCustomer.Credit, 110M<USD>)
+//    let test = upgradedCustomer.Credit = 110M<USD>
+//    Assert.IsFalse upgradedCustomer.IsVip
+//    Assert.IsFalse test
 //
 //[<Test>]
-//let ``4-3 Get customer info``() =
+//let ``4-4 Get customer info``() =
 //    let service = CustomerService() :> ICustomerService
 //    let info = service.GetCustomerInfo customer
 //    let expectedInfo = "Id: 1, IsVip: false, Credit: 0.00, IsAdult: true, Alert: Alert for customer 1"
-//    Assert.Equals (info, expectedInfo)
+//    let test = info = expectedInfo
+//    Assert.IsTrue test
