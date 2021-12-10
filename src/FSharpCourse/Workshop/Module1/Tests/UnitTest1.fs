@@ -10,6 +10,8 @@ let Setup () =
 open Types
 open Functions
 
+// Update these tests
+
 //[<Test>]
 //let ``1-1 Create customer``() =
 //    let customer = { Id = 1; IsVip = false; Credit = 0M }
