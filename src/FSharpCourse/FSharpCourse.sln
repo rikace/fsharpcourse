@@ -1,51 +1,54 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpCourse", "FSharpCourse\FSharpCourse.fsproj", "{57F6154F-0914-4DAB-89A9-7E10B3B488F8}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "FSharpCourse", "FSharpCourse\FSharpCourse.fsproj", "{57F6154F-0914-4DAB-89A9-7E10B3B488F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCSLib", "FCSLib\FCSLib.csproj", "{AEA4E709-807E-4652-919E-D3E89872F854}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FCSLib", "FCSLib\FCSLib.csproj", "{AEA4E709-807E-4652-919E-D3E89872F854}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workshop", "Workshop", "{1C2E6397-337A-40A7-BA44-8BF1B4C4CBFA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module1", "Module1", "{34673254-F332-4C5B-B70C-9BED74D3EB99}"
-ProjectSection(SolutionItems) = preProject
-	Workshop\Module1\Demo.fsx = Workshop\Module1\Demo.fsx
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		Workshop\Module1\Demo.fsx = Workshop\Module1\Demo.fsx
+	EndProjectSection
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Application", "Workshop\Module1\Application\Application.fsproj", "{C68E3002-EEFA-43A0-96DC-034D828A5ABC}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Application", "Workshop\Module1\Application\Application.fsproj", "{C68E3002-EEFA-43A0-96DC-034D828A5ABC}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tests", "Workshop\Module1\Tests\Tests.fsproj", "{CC3D3CAB-D30F-4111-BA2C-0F2C266031D0}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Tests", "Workshop\Module1\Tests\Tests.fsproj", "{CC3D3CAB-D30F-4111-BA2C-0F2C266031D0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module2", "Module2", "{90A5E5CB-2E76-4B3B-9BFF-AE7BDF7895A9}"
-ProjectSection(SolutionItems) = preProject
-	Workshop\Module2\Demo.fsx = Workshop\Module2\Demo.fsx
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		Workshop\Module2\Demo.fsx = Workshop\Module2\Demo.fsx
+	EndProjectSection
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tests", "Workshop\Module2\Tests\Tests.fsproj", "{867248F7-C553-421C-ACC8-DB592D7C9FDC}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Tests", "Workshop\Module2\Tests\Tests.fsproj", "{867248F7-C553-421C-ACC8-DB592D7C9FDC}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Application", "Workshop\Module2\Application\Application.fsproj", "{2D97D442-2C89-44A0-BD1A-38B6D679821A}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Application", "Workshop\Module2\Application\Application.fsproj", "{2D97D442-2C89-44A0-BD1A-38B6D679821A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module3", "Module3", "{7C979FBE-C492-4703-B531-F243670D220C}"
-ProjectSection(SolutionItems) = preProject
-	Workshop\Module3\Demo.fsx = Workshop\Module3\Demo.fsx
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		Workshop\Module3\Demo.fsx = Workshop\Module3\Demo.fsx
+	EndProjectSection
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Application", "Workshop\Module3\Application\Application.fsproj", "{CDFFA049-5358-489A-97F8-29E17EA74D4A}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Application", "Workshop\Module3\Application\Application.fsproj", "{CDFFA049-5358-489A-97F8-29E17EA74D4A}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestProject1", "Workshop\Module3\TestProject1\TestProject1.fsproj", "{2D61C131-9EE9-427E-B86F-479D60EB9F53}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "TestProject1", "Workshop\Module3\TestProject1\TestProject1.fsproj", "{2D61C131-9EE9-427E-B86F-479D60EB9F53}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module4", "Module4", "{F7D09ED4-E1AE-49FF-B2C4-779B07545C9B}"
-ProjectSection(SolutionItems) = preProject
-	Workshop\Module4\Demo.fsx = Workshop\Module4\Demo.fsx
-	Workshop\Module4\ScriptDSL.fsx = Workshop\Module4\ScriptDSL.fsx
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		Workshop\Module4\Demo.fsx = Workshop\Module4\Demo.fsx
+		Workshop\Module4\ScriptDSL.fsx = Workshop\Module4\ScriptDSL.fsx
+	EndProjectSection
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Application", "Workshop\Module4\Application\Application.fsproj", "{D6B9A5CB-71D3-4B61-99B7-72FCE569BF30}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Application", "Workshop\Module4\Application\Application.fsproj", "{D6B9A5CB-71D3-4B61-99B7-72FCE569BF30}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestProject1", "Workshop\Module4\TestProject1\TestProject1.fsproj", "{09CC5087-61A6-45FC-8B63-9B899C2EB111}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "TestProject1", "Workshop\Module4\TestProject1\TestProject1.fsproj", "{09CC5087-61A6-45FC-8B63-9B899C2EB111}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module5", "Module5", "{7364B820-F2ED-4CAF-B3D3-30BFBB69791F}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Application", "Workshop\Module5\Application\Application.fsproj", "{2BA218F8-CC04-4820-9E6D-3932DD4DBA30}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Application", "Workshop\Module5\Application\Application.fsproj", "{2BA218F8-CC04-4820-9E6D-3932DD4DBA30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,6 +101,9 @@ Global
 		{2BA218F8-CC04-4820-9E6D-3932DD4DBA30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BA218F8-CC04-4820-9E6D-3932DD4DBA30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{34673254-F332-4C5B-B70C-9BED74D3EB99} = {1C2E6397-337A-40A7-BA44-8BF1B4C4CBFA}
 		{C68E3002-EEFA-43A0-96DC-034D828A5ABC} = {34673254-F332-4C5B-B70C-9BED74D3EB99}
@@ -113,5 +119,8 @@ Global
 		{09CC5087-61A6-45FC-8B63-9B899C2EB111} = {F7D09ED4-E1AE-49FF-B2C4-779B07545C9B}
 		{7364B820-F2ED-4CAF-B3D3-30BFBB69791F} = {1C2E6397-337A-40A7-BA44-8BF1B4C4CBFA}
 		{2BA218F8-CC04-4820-9E6D-3932DD4DBA30} = {7364B820-F2ED-4CAF-B3D3-30BFBB69791F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A236AB9-33D3-4A27-8FF6-44FD4D6B687A}
 	EndGlobalSection
 EndGlobal
