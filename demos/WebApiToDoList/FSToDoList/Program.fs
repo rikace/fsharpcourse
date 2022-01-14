@@ -16,6 +16,7 @@ module Program =
     [<EntryPoint>]
     let main args =
         let host = CreateWebHostBuilder(args).Build()
+
         use scope = host.Services.CreateScope()
         let services = scope.ServiceProvider
         let context = services.GetRequiredService<ToDoContext>()

@@ -21,7 +21,11 @@ type Startup private () =
     member this.ConfigureServices(services: IServiceCollection) =
         // Add framework services.
         services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2) |> ignore
-        services.AddDbContext<ToDoContext>(fun options -> options.UseInMemoryDatabase("DB_ToDo") |> ignore) |> ignore
+        // services.AddDbContext<ToDoContext>(fun options -> options.UseInMemoryDatabase("DB_ToDo") |> ignore) |> ignore
+
+        services.AddDbContext<ToDoContext>(fun options ->
+            let dbConfig = this.Configuration.GetConnectionString("DefaultConnection")
+            options.UseSqlServer(dbConfig) |> ignore) |> ignore
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     member this.Configure(app: IApplicationBuilder, env: IHostingEnvironment) =

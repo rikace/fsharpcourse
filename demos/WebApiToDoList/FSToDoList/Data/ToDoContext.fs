@@ -22,12 +22,15 @@ module DataContext =
         member this.GetToDoItem (id:int) = this.ToDoItems.Find(id)
 
 
-
+        override this.OnModelCreating(builder: ModelBuilder) =
+            builder.Entity<ToDoItem>().ToTable("ToDos") |> ignore
 
 
     let Initialize (context : ToDoContext) =
+        
         //context.Database.EnsureDeleted() |> ignore //Deletes the database
         context.Database.EnsureCreated() |> ignore //check if the database is created, if not then creates it
+
         //default pairs for testing
         let tdItems : ToDoItem[] = 
             [|
@@ -38,5 +41,4 @@ module DataContext =
 
         if not(context.ToDoItems.Any()) then
                 context.ToDoItems.AddRange(tdItems) |> ignore
-                //context.ToDoItems.AddRange(transactions) |> ignore
                 context.SaveChanges() |> ignore  
