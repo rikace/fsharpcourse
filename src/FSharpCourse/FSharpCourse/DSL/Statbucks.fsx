@@ -40,4 +40,4 @@ let Price (cup:Cup) =
         )
     basePrice + extras
 
-
+let mocha = Cup.Of Grande Mocha + Shot + Shot  // |> Price

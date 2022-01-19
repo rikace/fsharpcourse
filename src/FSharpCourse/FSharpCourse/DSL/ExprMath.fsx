@@ -15,16 +15,42 @@ type Expr =
     | Subtract of Expr * Expr
     | Multiply of Expr * Expr
     | Divide   of Expr * Expr
-    
+
+type Result1 = 
+| Success of int
+| Error of string
+with static member (+) (a, b) = 
+        match a, b with 
+        | Success a, Success b -> a + b |> Success
+        | _, _ -> Error ""
+     static member (-) (a, b) = 
+        match a, b with 
+        | Success a, Success b -> a - b |> Success
+        | _, _ -> Error ""
+     static member (*) (a, b) = 
+        match a, b with 
+        | Success a, Success b -> a * b |> Success
+        | _, _ -> Error ""
+     static member (/) (a, b) = 
+        match a, b with 
+        | Success a, Success b -> a / b |> Success
+        | _, _ -> Error ""
+
+type rec2 = {name:string;age:int}
+type rec1 = {name:string;age:int}
+
+let myrec = {rec1.name = "hello" ;age = 20}
+
 // This simple pattern match is all we need to evaluate those
 // expressions. 
 let rec evaluate expr =
     match expr with
-    | Num(x)             -> x
+    | Num(x)             -> Success x
     | Add(lhs, rhs)      -> (evaluate lhs) + (evaluate rhs)
     | Subtract(lhs, rhs) -> (evaluate lhs) - (evaluate rhs)
     | Multiply(lhs, rhs) -> (evaluate lhs) * (evaluate rhs)
-    | Divide(lhs, rhs)   -> (evaluate lhs) / (evaluate rhs)
+    | Divide(lhs, rhs) when (evaluate rhs) = Success 0 -> Error "error" 
+    | Divide(lhs, rhs) -> (evaluate lhs) / (evaluate rhs)
 
 // 10 + 5
 let ``10 + 5`` = 0
@@ -53,6 +79,8 @@ type Expression =
     | Constant of float
     | Add of Expression * Expression
     | Mul of Expression * Expression
+
+
 
 let rec interpret (ex:Expression) =
     match ex with
@@ -90,7 +118,6 @@ run(10.0,expression3)
 
 
 (*
->
 Result: 21.00
 Result: 100.00
 *)

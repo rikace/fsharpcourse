@@ -106,40 +106,63 @@ module shape =
     // but based on functions.
 
     type Shape =        // define a "union" of alternative structures
-    | Circle of int
-    | Rectangle of int * int
-    | Polygon of (int * int) list
-    | Point of (int * int)
-
-    let draw shape =    // define a function "draw" with a shape param
+    | Circle of radius:float
+    | Rectangle of float * float
+    | Polygon of (float * float) list
+    
+    let draw (shape: Shape) =    // define a function "draw" with a shape param
       match shape with
-      | Circle r -> printfn "The circle has a radius of %d" r
-      | Rectangle (height,width) when height > 10-> printfn "The rectangle is %d high by %d wide" height width
-     // | Polygon points -> printfn "The polygon is made of these points %A" points
-      | _ -> printfn "I don't recognize this shape"
+      | Circle r -> printfn "The circle has a radius of %f" r
+      | Rectangle (height,width) when height > 10. && width < 5. -> 
+            printfn "The rectangle is %f high by %f wide is more then 10" height width
 
-    let circle = Circle(10)
-    let rect = Rectangle(4,5)
-    let polygon = Polygon( [(1,1); (2,2); (3,3)])
-    let point = Point(2,3)
+      | Rectangle (height,width) -> 
+        printfn "The rectangle is %f high by %f wide" height width
+      | Polygon(a) -> ()
+      // | _ -> printfn "I don't recognize this shape"
 
-    [circle; rect; polygon; point] |> List.iter draw
+    let circle = Circle(10.)
+    let rect = Rectangle(40.,5.)
+    let polygon = Polygon([(1.,1.); (2.,2.); (3.,3.)])
+    
+    [circle; rect; polygon] |> List.iter(fun s -> draw s)
 
+    let rectangle = Rectangle (2.2, 3.3)
+    let cir = Circle 3.4
 
-    module DiscUnion =
-
-      type Shape  =
-        | Square  of int
-        | Rectangle of float * float
-        | Circle of float
-
-      let sq = Square 7
-      let rect = Rectangle (2.2, 3.3)
-      let cir = Circle 3.4
-
-      let getArea shape =
+    let getArea shape =
         match shape with
-        | Square side -> float(side * side)
-        | Rectangle(w,h) -> w * h
+        | Rectangle (height,width)  -> height * width
         | Circle r -> System.Math.PI * r * r
+        | _ -> failwith "No implemented"
 
+    getArea cir
+    getArea rectangle
+
+    //getArea null
+
+    let divide x y = 
+        if y = 0 then None
+        else Some (x/y)
+    
+    let result = divide 4 2         
+    let add a b = a + b
+
+    // Person option CalDB(int id) 
+    (isNull)
+
+    // let person = 
+    //    if C#Module.Person(1) |> isNull then None
+    //    else Some p
+
+    // person?.name
+
+    match result with 
+    | None -> 0
+    | Some v -> add 4 v
+
+    divide 4 0
+
+    let divide' x y = 
+       (x/y)
+    divide' 4 0

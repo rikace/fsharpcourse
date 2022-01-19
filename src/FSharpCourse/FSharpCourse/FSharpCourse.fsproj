@@ -7,6 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <None Include="Composition.fsx" />
+        <Compile Include="Result.fs" />
         <None Include="DesignPatterns\adapter.fsx" />
         <None Include="DesignPatterns\chainor.fsx" />
         <None Include="DesignPatterns\chainor2.fsx" />
