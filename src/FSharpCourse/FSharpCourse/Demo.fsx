@@ -13,6 +13,7 @@ let myRecord = { Number = 42; Message = "hello" }
 let newRecord = { myRecord with Message = "hi" }
 
 
+
 // Demo 2
 
 let compute (x: int) (y: int) (operation: int -> int -> int) = operation x y
