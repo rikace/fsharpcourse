@@ -34,14 +34,14 @@ open Functions
 //    let upgradedCustomer = increaseCreditUsingVip customer
 //    Assert.Equals upgradedCustomer.Credit 100M
 //
-//[<Test>]
-//let ``2-5 Upgrade customer with even id``() =
-//    let customer = { Id = 2; IsVip = false; Credit = 0M }
-//    let upgradedCustomer = upgradeCustomer customer
-//    Assert.IsTrue (upgradedCustomer.IsVip && upgradedCustomer.Credit = 100M)
-//
-//[<Test>]
-//let ``2-6 Upgrade customer with odd id``() =
-//    let customer = { Id = 1; IsVip = false; Credit = 0M }
-//    let upgradedCustomer = upgradeCustomer customer
-//    Assert.IsFalse (upgradedCustomer.IsVip && upgradedCustomer.Credit = 50M)
+[<Test>]
+let ``2-5 Upgrade customer with even id``() =
+   let customer = { Id = 2; IsVip = false; Credit = 0M }
+   let upgradedCustomer = upgradeCustomer customer
+   Assert.IsTrue (upgradedCustomer.IsVip && upgradedCustomer.Credit = 100M)
+
+[<Test>]
+let ``2-6 Upgrade customer with odd id``() =
+   let customer = { Id = 1; IsVip = false; Credit = 0M }
+   let upgradedCustomer = upgradeCustomer customer
+   Assert.IsFalse (upgradedCustomer.IsVip && upgradedCustomer.Credit = 50M)

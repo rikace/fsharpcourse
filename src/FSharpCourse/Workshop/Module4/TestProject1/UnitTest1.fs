@@ -10,33 +10,33 @@ open System
 open Types
 open Functions
 open Services
-//
-//let customer = {
-//    Id = 1
-//    IsVip = false
-//    Credit = 0M<USD>
-//    PersonalDetails = Some {
-//        FirstName = "John"
-//        LastName = "Doe"
-//        DateOfBirth = DateTime(1970, 11, 23) }
-//    Notifications = ReceiveNotifications(receiveDeals = true,
-//                                         receiveAlerts = true) }
-//
-//
-//[<Test>]
-//let ``4-1 Get purchases average``() =
-//    let purchases = getPurchases customer
-//    let test = (purchases = (customer, 60M))
-//    Assert.IsTrue test
-//
-//
-//[<Test>]
-//let ``4-2 Increase credit using USD``() =
-//    let upgradedCustomer = increaseCreditUsingVip customer
-//    let test = upgradedCustomer.Credit = 50M<USD>
-//    Assert.IsTrue test
-//
-//
+
+let customer = {
+   Id = 1
+   IsVip = false
+   Credit = 0M<USD>
+   PersonalDetails = Some {
+       FirstName = "John"
+       LastName = "Doe"
+       DateOfBirth = DateTime(1970, 11, 23) }
+   Notifications = ReceiveNotifications(receiveDeals = true,
+                                        receiveAlerts = true) }
+
+
+[<Test>]
+let ``4-1 Get purchases average``() =
+   let purchases = getPurchases customer
+   let test = (purchases = (customer, 60M))
+   Assert.IsTrue test
+
+
+[<Test>]
+let ``4-2 Increase credit using USD``() =
+   let upgradedCustomer = increaseCreditUsingVip customer
+   let test = upgradedCustomer.Credit = 50M<USD>
+   Assert.IsTrue test
+
+
 //[<Test>]
 //let ``4-3 Upgrade customer``() =
 //    let service = CustomerService() :> ICustomerService

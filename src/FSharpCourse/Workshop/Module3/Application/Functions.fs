@@ -3,9 +3,10 @@
 open Types
 open System
 
+
 let tryPromoteToVip purchases =
     let customer, amount = purchases
-    if amount > 100M then { customer with IsVip = true }
+    if amount > 1000M then { customer with IsVip = true }
     else customer
 
 let getPurchases customer =
@@ -14,8 +15,19 @@ let getPurchases customer =
 
 let increaseCredit condition customer =
     if condition customer then { customer with Credit = customer.Credit + 100M }
-    else { customer with Credit = customer.Credit + 50M }
+     else { customer with Credit = customer.Credit + 50M }
 
 let increaseCreditUsingVip = increaseCredit (fun c -> c.IsVip)
 
 let upgradeCustomer = getPurchases >> tryPromoteToVip >> increaseCreditUsingVip
+
+let isAdult customer = 
+ match customer.PersonalDetails with
+ | None -> false
+ | Some d -> d.DateOfBirth.AddYears 18 <= DateTime.Now.Date
+
+let getAlert customer =
+ match customer.Notifications with
+ | RevieveNotifications(receiveAlerts = true) ->
+ sprintf "Alert for customer %i" customer.Id
+ | _ -> ""
