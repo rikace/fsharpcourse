@@ -1,3 +1,5 @@
+
+[<EntryPoint>]
 let main argv =
 
     let message = "World"
