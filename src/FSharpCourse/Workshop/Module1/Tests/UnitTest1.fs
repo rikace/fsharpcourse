@@ -10,10 +10,12 @@ let Setup () =
 open Types
 open Functions
 
+
 [<Test>]
 let ``1-1 Create customer``() =
    let customer = { Id = 1; IsVip = false; Credit = 0M }
    Assert.AreEqual(customer.GetType () ,typeof<Customer>)
+
 
 //[<Test>]
 //let ``1-2 Promote to vip``() =
