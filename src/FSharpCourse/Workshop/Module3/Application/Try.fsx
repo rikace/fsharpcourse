@@ -8,7 +8,7 @@ open Functions
 let customer = {
     Id = 1
     IsVip = false
-    Credit = 0M<USD>
+    Credit = 0M
     PersonalDetails = Some {
         FirstName = "John"
         LastName = "Doe"
