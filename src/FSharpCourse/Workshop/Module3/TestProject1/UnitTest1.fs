@@ -1,5 +1,4 @@
 module TestProject1
-open System
 open NUnit.Framework
 
 [<SetUp>]
@@ -8,6 +7,7 @@ let Setup () =
 
 open Types
 open Functions
+open System
 
 let customer = {
     Id = 1
