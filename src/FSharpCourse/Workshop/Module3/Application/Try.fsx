@@ -6,10 +6,10 @@ open Types
 open Functions
 
 let customer = {
-    Id = 1
-    IsVip = false
-    Credit = 0M<USD>
-    PersonalDetails = Some {
+        Id = 1
+        IsVip = false
+        Credit = 0M<USD>
+        PersonalDetails = Some {
         FirstName = "John"
         LastName = "Doe"
         DateOfBirth = DateTime(1970, 11, 23)
