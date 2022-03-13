@@ -15,11 +15,11 @@ let ``1-1 Create customer``() =
    let customer = { Id = 1; IsVip = false; Credit = 0M }
    Assert.AreEqual(customer.GetType () ,typeof<Customer>)
 
-//[<Test>]
-//let ``1-2 Promote to vip``() =
-//    let customer = { Id = 1; IsVip = false; Credit = 0M }
-//    let promotedCustomer = tryPromoteToVip (customer, 100.1M)
-//    Assert.IsTrue promotedCustomer.IsVip
+[<Test>]
+let ``1-2 Promote to vip``() =
+    let customer = { Id = 1; IsVip = false; Credit = 0M }
+    let promotedCustomer = tryPromoteToVip (customer, 100.1M)
+    Assert.IsTrue promotedCustomer.IsVip
 //
 //[<Test>]
 //let ``1-3 Do not promote to vip``() =
