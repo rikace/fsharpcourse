@@ -13,6 +13,3 @@ let tryPromoteToVip purchases =
 let getPurchases customer =
  if customer.Id % 2 = 0 then (customer, 120M)
  else (customer, 80M)
-
- 
-
