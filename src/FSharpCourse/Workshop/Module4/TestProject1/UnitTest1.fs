@@ -37,18 +37,18 @@ let ``4-2 Increase credit using USD``() =
    Assert.IsTrue test
 
 
-//[<Test>]
-//let ``4-3 Upgrade customer``() =
-//    let service = CustomerService() :> ICustomerService
-//    let upgradedCustomer = service.UpgradeCustomer 2
-//    let test = upgradedCustomer.Credit = 110M<USD>
-//    Assert.IsFalse upgradedCustomer.IsVip
-//    Assert.IsFalse test
-//
-//[<Test>]
-//let ``4-4 Get customer info``() =
-//    let service = CustomerService() :> ICustomerService
-//    let info = service.GetCustomerInfo customer
-//    let expectedInfo = "Id: 1, IsVip: false, Credit: 0.00, IsAdult: true, Alert: Alert for customer 1"
-//    let test = info = expectedInfo
-//    Assert.IsTrue test
+[<Test>]
+let ``4-3 Upgrade customer``() =
+   let service = CustomerService() 
+   let upgradedCustomer = service.UpgradeCustomer 2
+   let test = upgradedCustomer.Credit = 110M<USD>
+   Assert.IsFalse upgradedCustomer.IsVip
+   Assert.IsFalse test
+
+[<Test>]
+let ``4-4 Get customer info``() =
+   let service = CustomerService() 
+   let info = service.GetCustomerInfo customer
+   let expectedInfo = "Id: 1, IsVip: false, Credit: 0.00, IsAdult: true, Alert: Alert for customer 1"
+   let test = info = expectedInfo
+   Assert.IsTrue test
