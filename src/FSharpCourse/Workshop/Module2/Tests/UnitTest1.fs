@@ -6,7 +6,6 @@ open NUnit.Framework
 let Setup () =
     ()
 
-
 open Types
 open Functions
 

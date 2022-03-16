@@ -1,7 +1,4 @@
-﻿#load "Types.fs"
-#load "Functions.fs"
-
-open Types
+﻿open Types
 open Functions
 
 let Customer={Id=1; IsVip=false; Credit=10M  }
