@@ -5,8 +5,16 @@ open Types
 open Functions
 
 let customer = { Id = 1; IsVip = false; Credit = 10M }
-
 let purchases = (customer, 101M)
 let vipCustomer = tryPromoteToVip purchases
-
 let calculatedPurchases = getPurchases customer
+
+
+let increaseCreditUsingVip = increaseCredit( fun c -> c.IsVip)
+let customerWithMoreCredit = increaseCreditUsingVip customer
+
+let upgradeCustomer customer = 
+    customer 
+    |> getPurchases
+    |> tryPromoteToVip 
+    |> increaseCreditUsingVip
