@@ -7,7 +7,8 @@ type PersonalDetails = {
     LastName: string
     DateOfBirth: DateTime
 }
-
+[<Measure>] type EUR
+[<Measure>] type USD
 
 type Notifications =
     | NoNotifications
@@ -16,7 +17,9 @@ type Notifications =
 type Customer = {
     Id: int
     IsVip: bool
-    Credit: decimal
+    Credit: decimal<USD>
+    PersonalDetails: PersonalDetails option
+    Notifications: Notifications
 }
 
 type PurchaseHistory = {
