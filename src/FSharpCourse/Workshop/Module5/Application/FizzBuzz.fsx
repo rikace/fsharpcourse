@@ -2,14 +2,14 @@ namespace FizzBuzzApplication
 
 module FizzBuzz =
 
-    [1..100]
+[1..100]
     |> List.map (fun x ->
                 match x with
                 | _ when x % 15 = 0 ->"fizzbuzz"
                 | _ when x % 5 = 0 -> "buzz"
                 | _ when x % 3 = 0 -> "fizz"
                 | _ ->  x.ToString())
-    |> List.iter (fun x -> printfn "%s" x)
+    |> List.iter (fun x -> printfn "%s" x)    
 
     let fizzBuzz n =
         let divisibleBy m = n % m = 0
@@ -28,7 +28,7 @@ module FizzBuzz =
 
     [1..20] |> List.iter(fun s -> printfn "%s" (fizzBuzz' s))
 
-module ``FizzBuzz with Active Patterns`` =
+
 
     // LAB
     //  Active patterns
@@ -39,11 +39,30 @@ module ``FizzBuzz with Active Patterns`` =
     //      - "FizzBuzz" if the number is divisible by 3 and 5
     //      - the number value itself if the number otherwise
 
-    // Convert this "fizzBuzz" to use the Active patterns instead
-    let fizzBuzz n =
-        let divisibleBy m = n % m = 0
-        match divisibleBy 3,divisibleBy 5 with
-            | true, false -> "Fizz"
-            | false, true -> "Buzz"
-            | true, true -> "FizzBuzz"
-            | false, false -> sprintf "%d" n
+    //// convert this "fizzbuzz" to use the active patterns instead
+    //let fizzbuzz n =
+    //    let divisibleby m = n % m = 0
+    //    match divisibleby 3,divisibleby 5 with
+    //        | true, false -> "fizz"
+    //        | false, true -> "buzz"
+    //        | true, true -> "fizzbuzz"
+    //        | false, false -> sprintf "%d" n
+//module FizzBuzz with Active Patterns =
+let (|Fizz|None|) x =
+  if x % 3 = 0 then Fizz else None
+
+let (|Buzz|None|) x =
+  if x % 5 = 0 then Buzz else None
+
+let fizzbuzz x =
+  match x with
+    | Fizz & Buzz -> "FizzBuzz"
+    | Fizz -> "Fizz"
+    | Buzz -> "Buzz"
+    | _ -> x.ToString()
+
+let start xs =
+  for i in xs do
+    printfn "%s" (fizzbuzz i)
+ 
+ start {1 .. 15}

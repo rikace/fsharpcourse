@@ -1,15 +1,14 @@
 module Recursion =
 
 
-    //
 
-    let rec addOne' (input : int list) : int list =
-        match input with
-        | [] -> []
-        | x :: xs -> (x + 1) :: addOne' xs
+    //let rec addOne' (input : int list) : int list =
+      //  match input with
+        //| [] -> []
+        //| x :: xs -> (x + 1) :: addOne' xs
 
     // This will cause a StackOverflowException!
-    let ohNo' = [ 0 .. 400000 ] |> addOne'
+    //let ohNo' = [ 0 .. 400000 ] |> addOne'
 
     // LAB
     // Re-write the function 'addOne' in a "Tail optimized fashion"
@@ -23,3 +22,14 @@ module Recursion =
     // there is a recursive call let tail = addOne xs followed by an append to the resulting list from the recursive call head :: tail.
 
     // let rec addOne (input : int list) ...
+
+let addOne (input : int list) : int list =
+    let rec addOneInner (input : int list) (acc : int list) : int list = 
+        match input with
+        | [] -> acc
+        | x :: xs -> addOneInner xs ((x + 1) :: acc)
+    addOneInner input [] |> List.rev
+
+let yay = [ 0 .. 400000 ] |> addOne
+
+
