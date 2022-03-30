@@ -9,6 +9,8 @@ let Setup () =
 open Types
 open Functions
 
+//Test case for Module 2
+
 [<Test>]
 let ``2-1 Increase min credit using id``() =
     let customer = { Id = 1; IsVip = false; Credit = 0M }
