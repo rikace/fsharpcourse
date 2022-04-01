@@ -17,6 +17,8 @@ type Customer = {
     Id: int
     IsVip: bool
     Credit: decimal
+    PersonalDetails: PersonalDetails option
+    Notifications: Notifications
 }
 
 type PurchaseHistory = {
