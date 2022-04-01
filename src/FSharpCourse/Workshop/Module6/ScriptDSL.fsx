@@ -16,6 +16,15 @@
     //       - a "extra" DU with some cases
     //       - a "Cup" record type with some static member
 
+    type size = Tall | Grande | Venti
+    type drink = Latte | Cappuccino | Mocha | Americano
+    type extra = Shot | Syrup
+    type Cup = { Size:size; Drink:drink; Extras:extra list }
+        with static member (+) (cup:Cup,extra:extra) =
+                { cup with Extras = extra :: cup.Extras }
+
+             static member Of size drink =
+                { Size=size; Drink=drink; Extras=[] }
 
     let Price (cup:Cup) =
         let tall, grande, venti =
@@ -36,6 +45,10 @@
             )
         basePrice + extras
 
-    let myCoffee = Cup.Of Grande Cappuccino + Shot
-    let price = myCoffee |> Price
+    //let myCoffee = Cup.Of Grande Cappuccino + Shot
+    //let price = myCoffee |> Price
+    //printfn "THe price of my coffee is %f" price
+
+    let coffe = Cup.Of Grande Latte + Shot
+    let price = coffe |> Price
     printfn "THe price of my coffee is %f" price

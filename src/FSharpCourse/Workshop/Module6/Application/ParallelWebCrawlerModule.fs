@@ -70,11 +70,15 @@ module ParallelWebCrawler =
     //    to keep the console in a readable state
     let printerAgent =
         Agent.Start((fun (inbox : Agent<Msg<string, unit>>) -> async {
-
-
           // MISSING CODE
-          return! async.Return ()  // << replace this line with implementation
-          }), cancellationToken = cts.Token)
+            while true do 
+                let! msg = inbox.Receive()         
+                match msg with 
+                | Item(t) -> printfn "%s" t 
+                | Mailbox(agent) -> failwith "no implemented"}), cancellationToken = cts.Token) 
+
+          //return! async.Return ()  // << replace this line with implementation
+          
 
     // Test
     printerAgent.Post (Item "Hello from printerAgent!!")
@@ -87,27 +91,41 @@ module ParallelWebCrawler =
     //     This is important in the case of async computaions, so you can achieve great throughput
     //     If already completed the "Agent Pipeline" lab, then feel free to use the "parallelAgent" already created
 
-    let parallelAgent (degreeOfParallelism : int) (f: MailboxProcessor<Msg<'a, 'b>> -> Async<unit>) =
-        let token = cts.Token
+    //let parallelAgent (degreeOfParallelism : int) (f: MailboxProcessor<Msg<'a, 'b>> -> Async<unit>) =
+        
 
         // MISSING CODE HERE
         // 1 - use the "Array" module to initalize an array of Agents
-        let agents = Unchecked.defaultof<MailboxProcessor<_> []> // << replace this line with implementation
+        //let agents = Unchecked.defaultof<MailboxProcessor<_> []> // << replace this line with implementation
+    let parallelAgent n f =
+        let agents = Array.init n (fun _ ->
+            Agent<Msg<'a, 'b>>.Start(f, cancellationToken = cts.Token))
+        let token = cts.Token
+
 
         // 2 - crete an agent that broadcasts the messages received
         //     in a Round-Robin fashion between the agents created in the  previous point
+
+        //let agent = new Agent<Msg<'a, 'b>>((fun inbox ->
+        //    let rec loop index = async {
+        //        let! msg = inbox.Receive()
+                // MISSING CODE HERE
         let agent = new Agent<Msg<'a, 'b>>((fun inbox ->
             let rec loop index = async {
                 let! msg = inbox.Receive()
-                // MISSING CODE HERE
-
-                return! loop index
+                match msg with
+                | Msg.Item(item) ->
+                    agents.[index].Post (Item item)
+                    return! loop ((index + 1) % n)
+                | Mailbox(agent) ->
+                    agents |> Seq.iter(fun a -> a.Post (Mailbox agent))
+                    return! loop ((index + 1) % n)
             }
             loop 0), cancellationToken = token)
-
         token.Register(fun () -> agents |> Seq.iter(fun agent -> (agent :> IDisposable).Dispose())) |> ignore
         agent.Start()
         agent
+            
 
     // Step (3) complete the "Item(url)" case
     let fetchContentAgent (limit : int option) =
@@ -130,8 +148,17 @@ module ParallelWebCrawler =
                     //
                     // verify if the limit of the Urls downloaded is reached, and stop the process accordingly
                     // (keep in mind that the "limit" is an option type (if None then the process is limiteless)
-
-                    return! loop urls agents
+                    if urls |> Set.contains url |> not then
+                        let! content = downloadContent url
+                        content |> Option.iter(fun c ->
+                            for agent in agents do
+                                agent.Post (Item(c)))
+                        let urls' = (urls |> Set.add url)
+                        match limit with
+                        | Some l when urls' |> Seq.length >= l -> cts.Cancel()
+                        | _ -> return! loop urls' agents
+                    else return! loop urls agents
+                    
 
                 // the "Msg<_,_>" case is not completed.
                 // finish the code covering the missing "Msg<_,_>" cases.
@@ -165,11 +192,17 @@ module ParallelWebCrawler =
 
                 // MISSING CODE
 
-                // match msg with
-
-                return! loop agents // << this line should be replaced with correct implementation
+                match msg with
+                | Item(item) ->
+                    for agent in agents do
+                        agent.Post(Item(item))
+                    return! loop agents
+                | Mailbox(agent) -> return! loop (agent::agents)
             }
             loop [])
+
+         //return! loop agents // << this line should be replaced with correct implementation
+            
 
     // Testing
     let testBroadcastAgent1() =
