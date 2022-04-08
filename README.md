@@ -43,14 +43,20 @@ The course is split into 5 modules, each of them contains a presentation (theory
 - Functional lists
 - Object-oriented programming
 - Object Expression
-- DSL
 
 ## Module 5
+- DSL
+- Recursion
+- Active Patterns
+
+## Module 6
+- Concurrency in F#
 - Async computation
 - Agent programming
-- Parallel Web-Crawler
+- DEMO: Parallel Web-Crawler
 
-
-
-
-
+## Module 7
+- Event Driven Design in .NET
+- Events and Delegates in F#
+- How to handle a stream of events 
+- Observables in F#
