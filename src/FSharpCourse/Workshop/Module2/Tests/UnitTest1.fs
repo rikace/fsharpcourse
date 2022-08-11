@@ -13,7 +13,7 @@ open Functions
 let ``2-1 Increase min credit using id``() =
     let customer = { Id = 1; IsVip = false; Credit = 0M }
     let upgradedCustomer = increaseCredit (fun c -> c.Id = 2) customer
-    Assert.AreNotEqual(upgradedCustomer.Credit, 100M)
+    Assert.AreEqual(upgradedCustomer.Credit, 50M)
 
 [<Test>]
 let ``2-2 Increase max credit using id``() =
@@ -43,4 +43,4 @@ let ``2-5 Upgrade customer with even id``() =
 let ``2-6 Upgrade customer with odd id``() =
     let customer = { Id = 1; IsVip = false; Credit = 0M }
     let upgradedCustomer = upgradeCustomer customer
-    Assert.IsFalse (upgradedCustomer.IsVip && upgradedCustomer.Credit = 50M)
+    Assert.IsTrue (upgradedCustomer.IsVip && upgradedCustomer.Credit = 50M)

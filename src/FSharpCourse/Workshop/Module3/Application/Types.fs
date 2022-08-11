@@ -2,9 +2,6 @@
 
 open System
 
-[<Measure>]
-type USD
-
 type PersonalDetails = {
     FirstName: string
     LastName: string
@@ -20,7 +17,7 @@ type Notifications =
 type Customer = {
     Id: int
     IsVip: bool
-    Credit: decimal<USD>
+    Credit: decimal
     PersonalDetails: PersonalDetails option
     Notifications: Notifications
 } 
