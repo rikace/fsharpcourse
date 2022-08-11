@@ -13,7 +13,7 @@ open System
 let customer = {
     Id = 1
     IsVip = false
-    Credit = 0M
+    Credit = 10M<USD>
     PersonalDetails = Some {
         FirstName = "John"
         LastName = "Doe"
@@ -29,7 +29,7 @@ let ``3-1 Create customer``() =
 [<Test>]
 let ``3-2 Increase credit using USD``() =
     let upgradedCustomer = increaseCreditUsingVip customer
-    Assert.AreEqual(upgradedCustomer.Credit,50M)
+    Assert.AreEqual(upgradedCustomer.Credit,60M<USD>)
 
 [<Test>]
 let ``3-3 Adult customer``() =
